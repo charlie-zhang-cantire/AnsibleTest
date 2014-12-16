@@ -1,0 +1,43 @@
+---
+
+- name: check swap space
+  stat: path=/swap
+  register: swap_stat
+
+- name: create swap space
+  command: bash -lc "dd if=/dev/zero of=/swap bs=1M count=1024 ; mkswap /swap ; swapon /swap"
+  sudo: yes
+  when: swap_stat.stat.exists == false
+
+- name: update yum
+  sudo: yes
+  yum: name=* state=latest
+  tags: common
+
+- name: install System Packages
+  sudo: yes
+  yum: pkg={{ item }} state=latest
+  tags: common
+  with_items:
+    - ntp
+    - curl
+    - wget
+    - vim
+    - git
+    - libselinux-python
+
+- name: configure the timezone
+  sudo: yes
+  tags: common
+  file: src=/usr/share/zoneinfo/{{timezone}} dest=/etc/localtime state=link force=yes backup=yes
+
+- name: be sure ntpd is running and enabled
+  sudo: yes
+  tags: common
+  service: name=ntpd state=running enabled=yes
+  tags: ntp
+
+- name: set locale
+  tags: common
+  template: src=locale.conf dest=/etc/sysconfig/i18n
+  sudo: yes
