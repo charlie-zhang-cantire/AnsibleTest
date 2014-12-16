@@ -1,0 +1,11 @@
+[dispatcher]
+10.127.56.60 ansible_ssh_port=22 ansible_ssh_user=dcdeploy
+
+[authoring]
+10.126.49.215 ansible_ssh_port=22 ansible_ssh_user=ccqz
+
+[publish]
+10.127.56.61 ansible_ssh_port=22 ansible_ssh_user=ccqz
+
+[dbserver]
+10.126.32.15
