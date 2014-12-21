@@ -1,3 +1,11 @@
+[dispatcher]
+10.127.56.60 ansible_ssh_port=22 ansible_ssh_user=dcdeploy ansible_ssh_pass=welcome1
 
-[web]
-192.168.31.54
+[authoring]
+10.127.56.62 ansible_ssh_port=22 ansible_ssh_user=ccqc  ansible_ssh_pass=Cantire@1
+
+[publish]
+10.127.56.61 ansible_ssh_port=22 ansible_ssh_user=ccqc   ansible_ssh_pass=Cantire@1
+
+[dbserver]
+10.126.32.15

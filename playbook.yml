@@ -1,5 +1,23 @@
 ---
-
-- include: roles/web.yml
-# - include: roles/other_role_1.yml
-# - include: roles/other_role_2.yml
+- hosts: dispatcher
+  
+  vars:
+    #http_port: 80
+    #max_clients: 200
+    #remote_user: root
+  
+  tasks:
+    - name: create a shell script file for {{ vhost }}
+      template: src=testTemplate.j2 dest=/etc/httpd/conf.d/{{ vhost }}
+    
+    - name: remotely create a folder
+      shell: somescript.sh >> somelog.txt
+      args:
+        chdir: somedir/
+        creates: somelog.txt    
+      
+ # roles:
+ #   - common
+ #   - webserver
+    
+  
