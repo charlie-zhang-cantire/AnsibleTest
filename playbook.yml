@@ -7,6 +7,9 @@
     #remote_user: root
   
   tasks:
+    - Name: test copy command
+      copy: src=testTemplate.j2 dest=/home1/ccqc/testTemplate.copy
+  
     - name: create a shell script file for {{ vhost }}
       template: src=testTemplate.j2 dest=/home1/ccqc/testTemplate.sh
     
