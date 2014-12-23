@@ -16,7 +16,7 @@
     - name: remotely execute
       shell: /home1/ccqc/testTemplate.sh >> somelog.txt
       args:
-        chdir: /home1/ccqc
+        chdir: /home1/ccqc/TestPlayBook
     
       
  # roles:
