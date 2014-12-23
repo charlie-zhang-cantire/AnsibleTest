@@ -1,5 +1,5 @@
 ---
-- hosts: dispatcher
+- hosts: authoring
   
   vars:
     #http_port: 80
